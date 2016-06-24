@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -46,7 +47,8 @@ public class OpenfireClientLogin extends CommonController {
 		try {
 			ofConn.connect().login();
 			logger.info("用户登录Openfire成功！");
-			super.getHttpSession().setAttribute(username, ofConn);
+            //获取好友列表
+			ofConn.ge
 			return "openfire/openfire_client_chat";
 		} catch (SmackException e) {
 			e.printStackTrace();
@@ -55,6 +57,9 @@ public class OpenfireClientLogin extends CommonController {
 			e.printStackTrace();
 			return "redirect:login";
 		} catch (XMPPException e) {
+			e.printStackTrace();
+			return "redirect:login";
+		}catch (Exception e){
 			e.printStackTrace();
 			return "redirect:login";
 		}
