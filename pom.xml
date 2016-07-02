@@ -109,15 +109,11 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.12</version>
 		</dependency>
-		<!-- spring-data-jpa程序的启动项依赖，底层为hibernate实现，若不使用此框架则可以依赖其他的orm框架 -->
-		<!--<dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-jpa</artifactId> 
-			</dependency> -->
-		<!-- mysql依赖，使用spring-data-jpa需要指定一个数据库方言，用于连接数据库，即mysql驱动 -->
-		<!--<dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
-			</dependency> -->
-		<!-- 远程调用 -->
-		<!-- <dependency> <groupId>com.caucho</groupId> <artifactId>hessian</artifactId> 
-			<version>4.0.38</version> </dependency> -->
+		<!-- mongodb -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
 	</dependencies>
 	<!-- Package as an executable jar -->
 	<build>
