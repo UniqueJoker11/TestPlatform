@@ -34,7 +34,7 @@ public class CommonController {
 
     public HttpSession getHttpSession() {
         if(httpSession==null){
-            httpSession=request.getSession();
+            httpSession=request.getSession(true);
         }
         return httpSession;
     }

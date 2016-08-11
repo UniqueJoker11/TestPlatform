@@ -7,6 +7,20 @@
     <script type="text/javascript" src="${ctxPath}/js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="${ctxPath}/js/uikit.min.js"></script>
     <title>Openfire聊天室</title>
+    <script type="text/javascript">
+    $(function(){
+    	//加载用户好友
+    	loadUserRoster();
+    	function loadUserRoster(){
+    		var params=new Object();
+    		params.username=${userInfo};
+    		$.get("${ctxPath}/openfire/client/roster",params,function(data){
+    			$("#userRoster").html(data);
+    		});
+    	}
+    	
+    });
+    </script>
 </head>
 <body>
 <nav class="of-main-nav">
@@ -18,8 +32,8 @@
             <div class="uk-container-center">
                 <div class="uk-thumbnail">
                     <img class="uk-border-circle" src="${ctxPath}/images/header.jpg" alt="">
-
-                    <div class="uk-thumbnail-caption ">130000006</div>
+                    <div class="uk-thumbnail-caption ">${userInfo}</div>
+                    <a class="uk-button uk-width-1-1 uk-margin-small-bottom" href="${ctxPath}/openfire/client/logout">退出登录</a>
                 </div>
             </div>
         </div>
@@ -28,9 +42,7 @@
 
             <div>
                 <h4 class="of-roster-title"></h4>
-                <ul class="uk-list uk-list-striped">
-                    <li></li>
-                </ul>
+                <div id="userRoster"></div>
             </div>
         </div>
     </div>
